@@ -8,7 +8,6 @@ use kernelbasic;
 
 proc main()
 {
-  //var data: [1..10, 1..5] real;
   var data: [1..10_000, 1..512] real;
   fillRandom(data);
   var Kernel = new DotProduct(real);
