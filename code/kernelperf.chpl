@@ -126,13 +126,12 @@ record Sigmoid {
 
 /***************************************************************************/
 use DynamicIters;
-proc calculateKernelMatrix(K, data: [?D] ?T) /* : [?E] T */
+proc calculateKernelMatrix(K, data: [?D] ?T)
 {
   var n = D.dim(0).last;
   var p = D.dim(1).last;
   var E: domain(2) = {D.dim(0), D.dim(0)};
   var mat: [E] T;
-  // code below assumes data starts at 1,1
   var rowPointers: [1..n] c_ptr(T) =
     forall i in 1..n do c_ptrTo(data[i, 1]);
 
