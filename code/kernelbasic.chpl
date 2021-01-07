@@ -59,7 +59,6 @@ record Log {
   proc kernel(xrow: [?D] ?T, yrow: [D] T): T
   {
     var dist: T = 0: T;
-    //const n: int(64) = D.dim(0);
     for i in D {
       dist += abs(xrow[i] - yrow[i])**this.beta;
     }
@@ -74,7 +73,6 @@ record Cauchy {
   proc kernel(xrow: [?D] ?T, yrow: [D] T): T
   {
     var dist: T = 0: T;
-    //const n: int(64) = D.dim(0);
     for i in D {
       var tmp = xrow[i] - yrow[i];
       dist += tmp * tmp;
@@ -103,7 +101,6 @@ record Wave {
   proc kernel(xrow: [?D] ?T, yrow: [D] T): T
   {
     var dist: T = 0: T;
-    //const n: int(64) = D.dim(0);
     for i in D {
       dist += abs(xrow[i] - yrow[i]);
     }
@@ -119,7 +116,6 @@ record Sigmoid {
   proc kernel(xrow: [?D] ?T, yrow: [D] T): T
   {
     var dist: T = 0: T;
-    //const n: int(64) = D.domain.dim(0).last;
     for i in D {
       dist += xrow[i] * yrow[i];
     }
@@ -128,7 +124,7 @@ record Sigmoid {
 }
 
 /***************************************************************************/
-proc calculateKernelMatrix(K, data: [?D] ?T) /* : [?E] T */
+proc calculateKernelMatrix(K, data: [?D] ?T)
 {
   var n = D.dim(0).last;
   var p = D.dim(1).last;
