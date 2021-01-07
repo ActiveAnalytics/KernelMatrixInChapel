@@ -132,11 +132,9 @@ proc calculateKernelMatrix(K, data: [?D] ?T) /* : [?E] T */
 {
   var n = D.dim(0).last;
   var p = D.dim(1).last;
-  //writeln("Domain: ", D.dim(0));
   var E: domain(2) = {D.dim(0), D.dim(0)};
   var mat: [E] T;
   
-  //type A = [{1..n}] T;
   forall j in D.dim(0) {
     var yrow: [{1..p}] T = data[j, ..];
     for i in j..n {
